@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoicor</title>
+    <link rel="stylesheet" href="home.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar" id="nav">
+      <div class="logo">
+        <img src="img/invoicor_logo.png.png" height="50" width="50" />
+        <span class="site-name">INVOICOR</span>
+      </div>
+      <div class="nav-links">
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="sign">
+        <a href="#" class="signup">Sign Up</a>
+      </div>
+    </nav>
+
+    <!-- Hero / Description -->
+    <div class="desc">
+      <div class="desc1">
+        <h1>Create invoice</h1>
+        <p>Generate professional invoices in seconds.</p>
+      </div>
+      <button id="btn1">&#9432; What's New</button>
+    </div>
+
+    <!-- Main Container -->
+    <div class="cont">
+      <!-- Left side: Accordion details -->
+      <div class="detail">
+        <div class="accordion">
+          <!-- 1 -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              Bill Details
+              <span class="arrow">▼</span>
+            </div>
+            <div class="accordion-content">
+              <p>Form inputs for bill details go here...</p>
+            </div>
+          </div>
+
+          <!-- 2 -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              Customer Info
+              <span class="arrow">▼</span>
+            </div>
+            <div class="accordion-content">
+              <p>Form inputs for customer info go here...</p>
+            </div>
+          </div>
+
+          <!-- 3 -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              Items
+              <span class="arrow">▼</span>
+            </div>
+            <div class="accordion-content">
+              <p>Form inputs for adding items go here...</p>
+            </div>
+          </div>
+
+          <!-- 4 -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              Tax & Discounts
+              <span class="arrow">▼</span>
+            </div>
+            <div class="accordion-content">
+              <p>Form inputs for tax and discounts go here...</p>
+            </div>
+          </div>
+
+          <!-- 5 -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              Payment Info
+              <span class="arrow">▼</span>
+            </div>
+            <div class="accordion-content">
+              <p>Form inputs for payment info go here...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side: Bill preview -->
+      <div class="bill">Invoice Preview Here</div>
+    </div>
+     <footer>
+        <div class="logo">
+            <img src="img/invoicor_logo.png.png" height="50" width="50"></img>
+            <span class="site-name">INVOICOR</span>
+        </div>
+        <div class="ft">
+            <p style="font-size: 12x;">&copy; copyright 2025 INVOICOR</p>
+            <a href="#nav"><button id="btn"><i class="fa-solid fa-arrow-up"></i></button></a>
+        </div>
+    </footer>
+    <script>
+      // Select all accordion headers
+      const headers = document.querySelectorAll(".accordion-header");
+
+      headers.forEach((header) => {
+        header.addEventListener("click", () => {
+          const content = header.nextElementSibling; // get content after header
+          const arrow = header.querySelector(".arrow"); // get arrow inside header
+
+          // Close all other accordions
+          document.querySelectorAll(".accordion-content").forEach((c) => {
+            if (c !== content) {
+              c.style.maxHeight = null;
+              c.classList.remove("open");
+              c.previousElementSibling
+                .querySelector(".arrow")
+                .classList.remove("rotate");
+            }
+          });
+
+          // Toggle current accordion
+          if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+            content.classList.remove("open");
+            arrow.classList.remove("rotate");
+          } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+            content.classList.add("open");
+            arrow.classList.add("rotate");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
