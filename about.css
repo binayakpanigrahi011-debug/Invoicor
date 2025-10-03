@@ -143,6 +143,7 @@ h2 {
 i {
   font-size: 1.5em;
 }
+
 .faq {
   margin-top: 3rem;
   display: flex;
@@ -172,15 +173,32 @@ i {
   font-size: 20px;
   font-weight: 400;
   border-bottom: 2px solid gray;
+  transition: color 0.3s ease;
 }
 .faq .answer {
-  max-height: 0;
+  max-height: 0; 
   overflow: hidden;
   font-size: 20px;
+  transition: max-height 0.3s ease-out, padding 0.3s ease-out; 
+  padding: 0 20px; 
 }
+
+.faq .answer.active {
+    max-height: 200px; 
+    padding-top: 10px; 
+    padding-bottom: 10px; 
+    border-bottom: 1px solid #eee; 
+}
+
 .faq .answer span {
   display: inline-block;
-  padding: 1.2rem;
+  padding: 1.2rem 0; 
+}
+
+.faq .question .icon {
+    font-size: large; 
+    margin-left: 10px; 
+    transition: transform 0.3s ease; 
 }
 footer {
   display: flex;
