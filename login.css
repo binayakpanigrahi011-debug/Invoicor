@@ -1,23 +1,25 @@
-/* Modern blue gradient theme variables */
 :root {
-  --primary: #4CC3FF;
-  --primary-dark: #0091EA;
-  --primary-light: #DFF3FF;
-  --secondary: #2B3445;
-  --text-primary: #2B3445;
+  --primary: #4cc3ff;
+  --primary-dark: #0091ea;
+  --primary-light: #dff3ff;
+  --secondary: #2b3445;
+  --text-primary: #2b3445;
   --text-secondary: #516075;
-  --background-start: #DFF3FF;
-  --background-end: #4CC3FF;
+  --background-start: #dff3ff;
+  --background-end: #4cc3ff;
   --card-bg: rgba(255, 255, 255, 0.95);
   --input-bg: rgba(255, 255, 255, 0.9);
   --hover-lift: translateY(-4px);
-  
+
   /* Shadows */
-  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
-  
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
   /* Transitions */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 200ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -26,11 +28,13 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: linear-gradient(180deg, 
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(
+    180deg,
     #ffffff 0%,
     var(--background-start) 35%,
-    var(--background-end) 100%);
+    var(--background-end) 100%
+  );
   background-attachment: fixed;
   display: flex;
   justify-content: center;
@@ -51,8 +55,7 @@ body {
   background: var(--card-bg);
   border-radius: 16px;
   padding: 40px 32px;
-  box-shadow: 
-    0 10px 40px -10px rgba(76, 195, 255, 0.3),
+  box-shadow: 0 10px 40px -10px rgba(76, 195, 255, 0.3),
     0 20px 60px -30px rgba(76, 195, 255, 0.15);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(76, 195, 255, 0.1);
@@ -64,7 +67,7 @@ body {
 
 /* Add a subtle blue gradient border on hover */
 .form-box::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -93,10 +96,14 @@ body {
 }
 
 .logo::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(251, 191, 36, 0.08), transparent 70%);
+  background: radial-gradient(
+    circle at center,
+    rgba(251, 191, 36, 0.08),
+    transparent 70%
+  );
   opacity: 0;
   transition: opacity var(--transition-normal);
   border-radius: 16px;
@@ -113,9 +120,12 @@ body {
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
-  box-shadow: 
-    0 4px 12px rgba(76, 195, 255, 0.3),
+  background: linear-gradient(
+    135deg,
+    var(--primary-light) 0%,
+    var(--primary) 100%
+  );
+  box-shadow: 0 4px 12px rgba(76, 195, 255, 0.3),
     0 8px 24px rgba(76, 195, 255, 0.15);
   transform: translateY(-1px) rotate(0deg);
   transition: all var(--transition-normal);
@@ -138,14 +148,14 @@ body {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   /* Add subtle text shadow for depth */
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.06));
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.06));
   letter-spacing: -0.02em;
   line-height: 1;
   position: relative;
 }
 
 .logo-text::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   bottom: -4px;
@@ -160,8 +170,7 @@ body {
 /* Logo hover animations */
 .logo:hover .logo-icon {
   transform: translateY(-4px) rotate(-12deg);
-  box-shadow: 
-    0 8px 24px rgba(251, 191, 36, 0.4),
+  box-shadow: 0 8px 24px rgba(251, 191, 36, 0.4),
     0 12px 36px rgba(251, 191, 36, 0.2);
 }
 
@@ -176,7 +185,8 @@ body {
 /* subtle hover polish for the logo area */
 .form-box:hover .logo-icon {
   transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 18px 44px rgba(30,58,138,0.11), 0 6px 18px rgba(0,0,0,0.06);
+  box-shadow: 0 18px 44px rgba(30, 58, 138, 0.11),
+    0 6px 18px rgba(0, 0, 0, 0.06);
 }
 
 .subtitle {
@@ -205,7 +215,7 @@ body {
 }
 
 .toggle-buttons button.active {
-  background: linear-gradient(to right, var(--primary) 0%, var(--primary-dark) 100%);
+  background-color: #007bff;
   color: white;
 }
 
@@ -219,8 +229,14 @@ body {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 label {
@@ -252,8 +268,7 @@ input[type="password"] {
 input:focus {
   border-color: var(--primary);
   background: white;
-  box-shadow: var(--shadow-md),
-              0 0 0 3px rgba(251, 191, 36, 0.2);
+  box-shadow: var(--shadow-md), 0 0 0 3px rgba(251, 191, 36, 0.2);
   outline: none;
   transform: translateY(-1px);
 }
@@ -282,7 +297,7 @@ input:focus {
 .primary-btn {
   width: 100%;
   padding: 14px;
-  background: linear-gradient(to right, var(--primary) 0%, var(--primary-dark) 100%);
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 8px;
@@ -291,8 +306,7 @@ input:focus {
   cursor: pointer;
   margin-bottom: 16px;
   transition: all var(--transition-normal);
-  box-shadow: 
-    0 4px 12px rgba(76, 195, 255, 0.3),
+  box-shadow: 0 4px 12px rgba(76, 195, 255, 0.3),
     0 0 0 2px rgba(76, 195, 255, 0.1);
   position: relative;
   overflow: hidden;
@@ -300,10 +314,13 @@ input:focus {
 
 .primary-btn:hover {
   transform: var(--hover-lift);
-  box-shadow: 
-    0 8px 24px rgba(76, 195, 255, 0.4),
+  box-shadow: 0 8px 24px rgba(76, 195, 255, 0.4),
     0 0 0 2px rgba(76, 195, 255, 0.2);
-  background: linear-gradient(to right, var(--primary-dark) 0%, var(--primary-dark) 100%);
+  background: linear-gradient(
+    to right,
+    var(--primary-dark) 0%,
+    var(--primary-dark) 100%
+  );
 }
 
 .primary-btn:active {
@@ -333,12 +350,15 @@ input:focus {
 .secondary-btn:hover {
   transform: translateY(-3px);
   background-color: rgba(243, 244, 246, 0.92);
-  box-shadow: 0 14px 40px rgba(12,18,36,0.06);
+  box-shadow: 0 14px 40px rgba(12, 18, 36, 0.06);
 }
 
-
 /* small performance hint: prefer composited transforms */
-.primary-btn, .secondary-btn, .form-box, .logo-icon, input {
+.primary-btn,
+.secondary-btn,
+.form-box,
+.logo-icon,
+input {
   backface-visibility: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -346,8 +366,7 @@ input:focus {
 /* Modern hover effects and animations */
 .form-box:hover {
   transform: translateY(-8px) scale(1.005);
-  box-shadow: 
-    0 20px 40px -20px rgba(76, 195, 255, 0.4),
+  box-shadow: 0 20px 40px -20px rgba(76, 195, 255, 0.4),
     0 30px 70px -30px rgba(76, 195, 255, 0.2);
 }
 
@@ -361,10 +380,6 @@ input:focus {
   background: white;
 }
 
-.secondary-btn.google:hover {
-  color: #EA4335;
-}
-
 /* Add smooth transitions for better UX */
 .toggle-buttons button {
   position: relative;
@@ -372,7 +387,7 @@ input:focus {
 }
 
 .toggle-buttons button::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -428,11 +443,11 @@ input:focus {
   .container {
     padding: 16px;
   }
-  
+
   .form-box {
     padding: 32px 24px;
   }
-  
+
   .toggle-buttons button {
     font-size: 14px;
     padding: 10px;
