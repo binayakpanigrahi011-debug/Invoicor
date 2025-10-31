@@ -135,9 +135,27 @@
             <a href="#nav"><button id="btn"><i class="fa-solid fa-arrow-up"></i></button></a>
         </div>
     </footer>
-  
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const questions = document.querySelectorAll('.question');
 
+            questions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const icon = question.querySelector('.icon i');
 
+                    answer.classList.toggle('active');
 
+                    if (icon.classList.contains('fa-plus')) {
+                        icon.classList.remove('fa-plus');
+                        icon.classList.add('fa-minus');
+                    } else {
+                        icon.classList.remove('fa-minus');
+                        icon.classList.add('fa-plus');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
