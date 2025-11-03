@@ -47,7 +47,6 @@
   </aside>
 
   <div class="main-content">
-    <!-- Header -->
     <header class="header">
       <div class="header-left">
         <button class="back-button">←</button>
@@ -61,45 +60,47 @@
       </button>
     </header>
 
-  <!-- Stats Section -->
-  <div class="stats-container">
-    <div class="stat-card">
-      <div class="stat-title">Total Customers</div>
-      <div id="totalCustomers" class="stat-value">0</div>
+    <div class="stats-container">
+      <div class="stat-card">
+        <div class="stat-title">Total Customers</div>
+        <div id="totalCustomers" class="stat-value">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-title">Active This Month</div>
+        <div id="activeThisMonth" class="stat-value">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-title">Avg Orders per Customer</div>
+        <div id="avgOrders" class="stat-value">0.0</div>
+      </div>
     </div>
-    <div class="stat-card">
-      <div class="stat-title">Active This Month</div>
-      <div id="activeThisMonth" class="stat-value">0</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-title">Avg Orders per Customer</div>
-      <div id="avgOrders" class="stat-value">0.0</div>
-    </div>
-  </div>
 
-  <!-- Search Section -->
-  <div class="search-container">
-    <input type="text" id="searchInput" class="search-input" placeholder="Search customers..." />
-  </div>
+    <div class="search-container">
+      <input
+        type="text"
+        id="searchInput"
+        class="search-input"
+        placeholder="Search customers..."
+      />
+    </div>
 
-  <!-- Customers Table -->
-  <div class="customers-table">
-    <table>
-      <thead>
-        <tr>
-          <th>Customer</th>
-          <th>Contact</th>
-          <th>Company</th>
-          <th>Total Orders</th>
-          <th>Last Order</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody id="customerTableBody">
-        <!-- Dynamic rows go here -->
-      </tbody>
-    </table>
-  </div>
+    <div class="customers-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Customer</th>
+            <th>Contact</th>
+            <th>Company</th>
+            <th>Total Orders</th>
+            <th>Last Order</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="customerTableBody">
+          <!-- Dynamic rows go here -->
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <!-- Modal -->
@@ -138,7 +139,14 @@
           <input type="date" id="lastOrder" required />
         </div>
         <div class="form-actions">
-          <button type="button" id="cancelBtn" class="add-customer-btn" style="background-color: #666;">Cancel</button>
+          <button
+            type="button"
+            id="cancelBtn"
+            class="add-customer-btn"
+            style="background-color: #666"
+          >
+            Cancel
+          </button>
           <button type="submit" class="add-customer-btn">Add Customer</button>
         </div>
       </form>

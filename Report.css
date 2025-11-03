@@ -1,0 +1,115 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f7fa;
+        color: #333;
+      }
+
+      .sidebar-container {
+        display: flex;
+        min-height: 100vh;
+      }
+
+      .sidebar {
+        width: 290px;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .sidebar-header {
+        margin-top: 20px;
+        color: #333;
+        font-size: 1.1em;
+        padding-bottom: 65px;
+      }
+
+      .sidebar-nav ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .sidebar-nav .nav-item {
+        padding: 10px 0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        color: #555;
+        transition: background-color 0.3s;
+      }
+
+      .sidebar-nav .nav-item:hover,
+      .sidebar-nav .nav-item.active {
+        color: #007bff;
+        background-color: #e9f0ff;
+        border-radius: 5px;
+      }
+
+      .sidebar-nav .nav-item i {
+        margin-right: 10px;
+        font-size: 1.2em;
+      }
+
+      .sidebar-nav .nav-item .badge {
+        background-color: #007bff;
+        color: white;
+        padding: 2px 7px;
+        border-radius: 10px;
+        font-size: 0.8em;
+        margin-left: auto;
+      }
+
+      .sidebar-nav .nav-item .badge.alert {
+        background-color: #dc3545;
+      }
+
+      .quick-actions,
+      .alerts {
+        margin-top: 70px;
+        border-top: 1px solid #eee;
+        padding-top: 30px;
+      }
+
+      .quick-actions h4,
+      .alerts h4 {
+        color: #777;
+        margin-bottom: 15px;
+      }
+
+      .new-invoice-btn {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 1em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .new-invoice-btn i {
+        margin-right: 8px;
+      }
+
+      .alerts p {
+        font-size: 0.9em;
+        color: #dc3545;
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+
+      .alerts p i {
+        margin-right: 8px;
+      }
