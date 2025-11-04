@@ -88,16 +88,11 @@ a {
     margin-left: auto;
 }
 
-<<<<<<< HEAD
 .quick-actions h3,
 .alerts h3 {
   font-size: 0.875rem;
   color: var(--secondary-color);
   margin-bottom: 0.75rem;
-=======
-.sidebar-nav .nav-item .badge.alert {
-    background-color: #dc3545;
->>>>>>> 8a746d1c10b7cc2c8b5df4a060aca4ce15cf50a2
 }
 
 .quick-actions,
