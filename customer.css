@@ -14,7 +14,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial,
+    sans-serif;
 }
 
 body {
@@ -40,6 +41,10 @@ body {
     flex-direction: column;
     height: 100vh;
     position: fixed;
+}
+a {
+  text-decoration: none;
+  color: #777;
 }
 
 .sidebar-header {
@@ -83,8 +88,16 @@ body {
     margin-left: auto;
 }
 
+<<<<<<< HEAD
+.quick-actions h3,
+.alerts h3 {
+  font-size: 0.875rem;
+  color: var(--secondary-color);
+  margin-bottom: 0.75rem;
+=======
 .sidebar-nav .nav-item .badge.alert {
     background-color: #dc3545;
+>>>>>>> 8a746d1c10b7cc2c8b5df4a060aca4ce15cf50a2
 }
 
 .quick-actions,
@@ -181,7 +194,7 @@ body {
 }
 
 .add-customer-btn {
-  background: #007BFF;
+  background: #007bff;
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
@@ -211,12 +224,10 @@ body {
   background: var(--card-background);
   padding: 2rem;
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid rgba(0,0,0,0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
-
-
 
 .stat-title {
   color: var(--secondary-color);
@@ -239,7 +250,7 @@ body {
 }
 
 .search-container::before {
-  content: '🔍';
+  content: "🔍";
   position: absolute;
   left: 2.75rem;
   top: 50%;
@@ -258,7 +269,7 @@ body {
   font-size: 1rem;
   background: var(--card-background);
   transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .search-input:focus {
@@ -280,8 +291,8 @@ body {
   background: var(--card-background);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 table {
@@ -320,7 +331,8 @@ td.company-cell {
   min-width: 150px;
 }
 
-td.orders-cell, td.date-cell {
+td.orders-cell,
+td.date-cell {
   min-width: 100px;
 }
 
@@ -391,7 +403,7 @@ td.orders-cell, td.date-cell {
 }
 
 .action-button:hover {
-  background: rgba(0,0,0,0.03);
+  background: rgba(0, 0, 0, 0.03);
   transform: translateY(-2px);
 }
 
@@ -503,7 +515,7 @@ td.orders-cell, td.date-cell {
 }
 
 .form-actions button[type="submit"] {
-  background: #007BFF;
+  background: #007bff;
 }
 
 .form-grid {
@@ -519,30 +531,32 @@ td.orders-cell, td.date-cell {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .header, .search-container {
+  .header,
+  .search-container {
     padding: 1rem;
   }
-  
+
   .stats-container {
     grid-template-columns: 1fr;
     padding: 1rem;
   }
-  
+
   .customers-table {
     margin: 0 1rem;
   }
-  
+
   .search-input {
     width: 100%;
   }
-  
+
   .contact-info {
     flex-direction: column;
   }
 }
 
 /* Animations */
-.add-customer-btn, .action-button {
+.add-customer-btn,
+.action-button {
   transition: all 0.2s ease;
 }
 
@@ -555,7 +569,7 @@ tr:hover {
   position: absolute;
   background: white;
   border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   z-index: 1000;
   min-width: 120px;

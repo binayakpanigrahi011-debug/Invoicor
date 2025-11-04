@@ -45,6 +45,74 @@
           <p><i class="fas fa-exclamation-circle"></i> 1 item low on stock</p>
         </div>
       </aside>
+
+      <main class="main-content">
+        <header class="page-header">
+          <h1>Reports</h1>
+          <div class="header-actions">
+            <button id="exportCsv" class="btn">Export CSV</button>
+            <button id="printReport" class="btn outline">Print</button>
+          </div>
+        </header>
+
+        <section class="top-cards">
+          <div class="card">
+            <h3 id="totalInvoices">--</h3>
+            <p>Total Invoices</p>
+          </div>
+          <div class="card">
+            <h3 id="paidInvoices">--</h3>
+            <p>Paid</p>
+          </div>
+          <div class="card">
+            <h3 id="pendingInvoices">--</h3>
+            <p>Pending</p>
+          </div>
+          <div class="card">
+            <h3 id="overdueInvoices">--</h3>
+            <p>Overdue</p>
+          </div>
+        </section>
+
+        <section class="reports-grid">
+          <div class="panel chart-panel">
+            <h4>Monthly Growth (Revenue)</h4>
+            <div class="chart-container">
+              <canvas id="growthChart" aria-label="growth chart"></canvas>
+            </div>
+          </div>
+
+          <div class="panel status-panel">
+            <h4>Invoice Status</h4>
+            <div class="chart-container small">
+              <canvas id="statusChart" aria-label="status chart"></canvas>
+            </div>
+            <h4 class="mt">Pending / Paid Mails</h4>
+            <ul id="mailList" class="mail-list"></ul>
+          </div>
+        </section>
+
+        <section class="recent-panel panel">
+          <h4>Recent Invoices</h4>
+          <div class="table-wrap">
+            <table class="table" id="recentTable">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Customer</th>
+                  <th>Date</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="report.js"></script>
 </body>
 </html>
