@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Report.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Report.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="sidebar-container">
       <aside class="sidebar">
         <div class="sidebar-header">
@@ -19,18 +19,28 @@
         <nav class="sidebar-nav">
           <ul>
             <li class="nav-item">
-              <i class="fas fa-chart-line"></i> Dashboard
+              <a href="dashboard.html"
+                ><i class="fas fa-chart-line"></i> Dashboard</a
+              >
             </li>
             <li class="nav-item">
-              <i class="fas fa-file-invoice"></i> Invoices
+              <a href="invoices.html"
+                ><i class="fas fa-file-invoice"></i> Invoices
+              </a>
               <span class="badge">1</span>
             </li>
             <li class="nav-item">
-              <i class="fas fa-boxes"></i> Inventory
+              <a href="inventory.html">
+                <i class="fas fa-boxes"></i> Inventory
+              </a>
               <span class="badge alert">1</span>
             </li>
-            <li class="nav-item"><i class="fas fa-users"></i> Customers</li>
-            <li class="nav-item active"><i class="fas fa-chart-pie"></i> Reports</li>
+            <li class="nav-item">
+              <a href="customer.html"><i class="fas fa-users"></i> Customers</a>
+            </li>
+            <li class="nav-item active">
+              <a href="Reports.html"><i class="fas fa-users"></i> Reports</a>
+            </li>
           </ul>
         </nav>
         <div class="quick-actions">
@@ -114,5 +124,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="report.js"></script>
-</body>
+  </body>
 </html>
