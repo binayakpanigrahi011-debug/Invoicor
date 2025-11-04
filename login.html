@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -83,4 +84,100 @@
   <!-- Script -->
   <script src="login.js"></script>
 </body>
+=======
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoicor</title>
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-box">
+        <!-- Logo Section -->
+        <div class="logo">
+          <div class="logo-icon">
+            <img
+              src="./img/invoicor_logo.png.png"
+              alt="Invoicor Logo"
+              height="50"
+              width="50"
+            />
+          </div>
+          <div class="logo-text">Invoicor</div>
+        </div>
+
+        <!-- Toggle Buttons -->
+        <div class="toggle-buttons">
+          <button id="show-login" class="active">Sign In</button>
+          <button id="show-signup">Sign Up</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="login-form" class="form active">
+          <p class="subtitle">Access your account</p>
+
+          <label for="login-email">Email address<span>*</span></label>
+          <input type="email" id="login-email" required />
+
+          <label for="login-password">Password<span>*</span></label>
+          <div class="password-wrapper">
+            <input type="password" id="login-password" required />
+            <span
+              class="toggle-password"
+              onclick="togglePassword('login-password')"
+              >👁️</span
+            >
+          </div>
+
+          <label class="remember-me">
+            <input type="checkbox" /> Remember me
+          </label>
+
+          <button type="submit" class="primary-btn">Sign in</button>
+
+          <!-- Google Sign-in Button (Simplified) -->
+          <button type="button" class="secondary-btn google">
+            <img
+              src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+              alt="Google Logo"
+              height="18"
+            />
+            <span>Sign in with Google</span>
+          </button>
+        </form>
+
+        <!-- Signup Form -->
+        <form id="signup-form" class="form">
+          <p class="subtitle">Create your account</p>
+
+          <label for="name">Name<span>*</span></label>
+          <input type="text" id="name" required />
+
+          <label for="signup-email">Email address<span>*</span></label>
+          <input type="email" id="signup-email" required />
+
+          <label for="signup-password">Password<span>*</span></label>
+          <input type="password" id="signup-password" required />
+
+          <label for="confirm-password">Confirm password<span>*</span></label>
+          <input type="password" id="confirm-password" required />
+
+          <button type="submit" class="primary-btn">Sign up</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Script -->
+    <script src="login.js"></script>
+  </body>
+>>>>>>> 11339ec (inking updated)
 </html>

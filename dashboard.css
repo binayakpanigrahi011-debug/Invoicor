@@ -9,7 +9,10 @@ body {
   display: flex;
   min-height: 100vh;
 }
-
+a {
+  text-decoration: none;
+  color: #777;
+}
 .sidebar {
   width: 250px;
   background-color: #fff;
@@ -95,10 +98,6 @@ body {
   margin-right: 8px;
 }
 
-a {
-  text-decoration: none;
-  color: #777;
-}
 .alerts p {
   font-size: 0.9em;
   color: #dc3545;
