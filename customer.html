@@ -4,52 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Invoice Pro - Customer Management</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <link rel="stylesheet" href="customer.css" />
   </head>
   <body>
-    <div class="sidebar">
-      <nav>
-        <a href="#" class="nav-item">
-          <span class="nav-icon">🏠</span>
-          <span>Dashboard</span>
-        </a>
-        <a href="#" class="nav-item">
-          <span class="nav-icon">📄</span>
-          <span>Invoices</span>
-          <span class="badge">1</span>
-        </a>
-        <a href="#" class="nav-item">
-          <span class="nav-icon">📦</span>
-          <span>Inventory</span>
-          <span class="badge red">1</span>
-        </a>
-        <a href="#" class="nav-item active">
-          <span class="nav-icon">👥</span>
-          <span>Customers</span>
-        </a>
-        <a href="#" class="nav-item">
-          <span class="nav-icon">📊</span>
-          <span>Reports</span>
-        </a>
-      </nav>
-      <div class="sidebar-footer">
-        <div class="quick-actions">
-          <h3>Quick Actions</h3>
-          <a href="#" class="action-item">
-            <span>+</span>
-            <span>New Invoice</span>
-          </a>
-        </div>
-        <div class="alerts">
-          <h3>Alerts</h3>
-          <div class="alert-item warning">1 pending invoice</div>
-          <div class="alert-item danger">1 item low on stock</div>
-        </div>
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h3>Invoice and Inventory Management</h3>
       </div>
-    </div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item"><i class="fas fa-chart-line"></i> Dashboard</li>
+          <li class="nav-item">
+            <i class="fas fa-file-invoice"></i> Invoices
+            <span class="badge">1</span>
+          </li>
+          <li class="nav-item">
+            <i class="fas fa-boxes"></i> Inventory
+            <span class="badge alert">1</span>
+          </li>
+          <li class="nav-item active">
+            <i class="fas fa-users"></i> Customers
+          </li>
+          <li class="nav-item"><i class="fas fa-chart-pie"></i> Reports</li>
+        </ul>
+      </nav>
+      <div class="quick-actions">
+        <h4>Quick Actions</h4>
+        <button class="new-invoice-btn">
+          <i class="fas fa-plus"></i> New Invoice
+        </button>
+      </div>
+      <div class="alerts">
+        <h4>Alerts</h4>
+        <p><i class="fas fa-exclamation-circle"></i> 1 pending invoice</p>
+        <p><i class="fas fa-exclamation-circle"></i> 1 item low on stock</p>
+      </div>
+    </aside>
 
     <div class="main-content">
-      <!-- Header -->
       <header class="header">
         <div class="header-left">
           <button class="back-button">←</button>
@@ -63,7 +59,6 @@
         </button>
       </header>
 
-      <!-- Stats Section -->
       <div class="stats-container">
         <div class="stat-card">
           <div class="stat-title">Total Customers</div>
@@ -79,7 +74,6 @@
         </div>
       </div>
 
-      <!-- Search Section -->
       <div class="search-container">
         <input
           type="text"
@@ -89,7 +83,6 @@
         />
       </div>
 
-      <!-- Customers Table -->
       <div class="customers-table">
         <table>
           <thead>
