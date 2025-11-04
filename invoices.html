@@ -1,114 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Invoices - Invoice Pro</title>
-    <link rel="stylesheet" href="invoices.css">
+    <link rel="stylesheet" href="invoices.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-</head>
-<body>
+  </head>
+  <body>
     <div class="page-container">
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <h3>Invoice and Inventory Management</h3>
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h3>Invoice and Inventory Management</h3>
+        </div>
+        <nav class="sidebar-nav">
+          <ul>
+            <li class="nav-item active">
+              <a href="dashboard.html"
+                ><i class="fas fa-chart-line"></i> Dashboard</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="invoices.html"
+                ><i class="fas fa-file-invoice"></i> Invoices
+              </a>
+              <span class="badge">1</span>
+            </li>
+            <li class="nav-item">
+              <a href="inventory.html">
+                <i class="fas fa-boxes"></i> Inventory
+              </a>
+              <span class="badge alert">1</span>
+            </li>
+            <li class="nav-item">
+              <a href="customer.html"><i class="fas fa-users"></i> Customers</a>
+            </li>
+            <li class="nav-item"><i class="fas fa-chart-pie"></i> Reports</li>
+          </ul>
+        </nav>
+        <div class="quick-actions">
+          <h4>Quick Actions</h4>
+          <button class="new-invoice-btn">
+            <i class="fas fa-plus"></i> New Invoice
+          </button>
+        </div>
+        <div class="alerts">
+          <h4>Alerts</h4>
+          <p><i class="fas fa-exclamation-circle"></i> 1 pending invoice</p>
+          <p><i class="fas fa-exclamation-circle"></i> 1 item low on stock</p>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="navbar">
+          <div class="navbar-left">
+            <button class="back-button">&#8592;</button>
+            <h1>Invoices</h1>
+          </div>
+          <div class="navbar-right">
+            <button class="header-new-invoice-button">+ New Invoice</button>
+          </div>
+        </header>
+
+        <section class="invoice-list-section">
+          <div class="search-filter-bar">
+            <input
+              type="text"
+              placeholder="Search invoices..."
+              class="search-input"
+            />
+            <div class="filter-group">
+              <select class="status-filter">
+                <option>All Status</option>
+                <option>Paid</option>
+                <option>Pending</option>
+              </select>
+              <button class="filter-icon">⚙️</button>
             </div>
-            <nav class="sidebar-nav">
-                <ul>
-                    <li class="nav-item active">
-                        <i class="fas fa-chart-line"></i> Dashboard
-                    </li>
-                    <li class="nav-item">
-                        <i class="fas fa-file-invoice"></i> Invoices
-                        <span class="badge">1</span>
-                    </li>
-                    <li class="nav-item">
-                        <i class="fas fa-boxes"></i> Inventory
-                        <span class="badge alert">1</span>
-                    </li>
-                    <li class="nav-item"><i class="fas fa-users"></i> Customers</li>
-                    <li class="nav-item"><i class="fas fa-chart-pie"></i> Reports</li>
-                </ul>
-            </nav>
-            <div class="quick-actions">
-                <h4>Quick Actions</h4>
-                <button class="new-invoice-btn">
-                    <i class="fas fa-plus"></i> New Invoice
-                </button>
-            </div>
-            <div class="alerts">
-                <h4>Alerts</h4>
-                <p><i class="fas fa-exclamation-circle"></i> 1 pending invoice</p>
-                <p><i class="fas fa-exclamation-circle"></i> 1 item low on stock</p>
-            </div>
-        </aside>
+          </div>
 
-        <main class="main-content">
-            <header class="navbar">
-                <div class="navbar-left">
-                    <button class="back-button">&#8592;</button>
-                    <h1>Invoices</h1>
-                </div>
-                <div class="navbar-right">
-                    <button class="header-new-invoice-button">+ New Invoice</button>
-                </div>
-            </header>
+          <div class="invoice-list-header">
+            <h2>Invoice List (2)</h2>
+          </div>
 
-            <section class="invoice-list-section">
-                <div class="search-filter-bar">
-                    <input type="text" placeholder="Search invoices..." class="search-input">
-                    <div class="filter-group">
-                        <select class="status-filter">
-                            <option>All Status</option>
-                            <option>Paid</option>
-                            <option>Pending</option>
-                        </select>
-                        <button class="filter-icon">⚙️</button>
-                    </div>
-                </div>
-
-                <div class="invoice-list-header">
-                    <h2>Invoice List (2)</h2>
-                </div>
-
-                <table class="invoice-table">
-                    <thead>
-                        <tr>
-                            <th>Invoice #</th>
-                            <th>Customer</th>
-                            <th>Date</th>
-                            <th>Due Date</th>
-                            <th>Amount</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>INV-001</td>
-                            <td>John Smith</td>
-                            <td>20/09/2024</td>
-                            <td>20/10/2024</td>
-                            <td>$439.98</td>
-                            <td><span class="status-badge status-paid">paid</span></td>
-                            <td>...</td>
-                        </tr>
-                        <tr>
-                            <td>INV-002</td>
-                            <td>Sarah Johnson</td>
-                            <td>22/09/2024</td>
-                            <td>22/10/2024</td>
-                            <td>$153.96</td>
-                            <td><span class="status-badge status-pending">pending</span></td>
-                            <td>...</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-        </main>
+          <table class="invoice-table">
+            <thead>
+              <tr>
+                <th>Invoice #</th>
+                <th>Customer</th>
+                <th>Date</th>
+                <th>Due Date</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>INV-001</td>
+                <td>John Smith</td>
+                <td>20/09/2024</td>
+                <td>20/10/2024</td>
+                <td>$439.98</td>
+                <td><span class="status-badge status-paid">paid</span></td>
+                <td>...</td>
+              </tr>
+              <tr>
+                <td>INV-002</td>
+                <td>Sarah Johnson</td>
+                <td>22/09/2024</td>
+                <td>22/10/2024</td>
+                <td>$153.96</td>
+                <td>
+                  <span class="status-badge status-pending">pending</span>
+                </td>
+                <td>...</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
     </div>
-</body>
+  </body>
 </html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventory Management</title>
+    <link rel="stylesheet" href="inventory.css" />
+
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- ✅ SAME SIDEBAR AS DASHBOARD -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h3>Invoice and Inventory Management</h3>
+        </div>
+        <nav class="sidebar-nav">
+          <ul>
+            <li class="nav-item">
+              <a href="dashboard.html"
+                ><i class="fas fa-chart-line"></i> Dashboard</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="invoices.html"
+                ><i class="fas fa-file-invoice"></i> Invoices
+              </a>
+              <span class="badge">1</span>
+            </li>
+            <li class="nav-item active">
+              <a href="inventory.html">
+                <i class="fas fa-boxes"></i> Inventory
+              </a>
+              <span class="badge alert">1</span>
+            </li>
+            <li class="nav-item">
+              <a href="customer.html"><i class="fas fa-users"></i> Customers</a>
+            </li>
+            <li class="nav-item"><i class="fas fa-chart-pie"></i> Reports</li>
+          </ul>
+        </nav>
+        <div class="quick-actions">
+          <h4>Quick Actions</h4>
+          <button class="new-invoice-btn">
+            <i class="fas fa-plus"></i> New Invoice
+          </button>
+        </div>
+        <div class="alerts">
+          <h4>Alerts</h4>
+          <p><i class="fas fa-exclamation-circle"></i> 1 pending invoice</p>
+          <p><i class="fas fa-exclamation-circle"></i> 1 item low on stock</p>
+        </div>
+      </aside>
+
+      <!-- ✅ Rest of your Inventory Page -->
+      <main class="main-content">
+        <header class="main-header">
+          <h2>Inventory Management</h2>
+          <button class="add-product-btn">
+            <i class="fas fa-plus"></i> Add Product
+          </button>
+        </header>
+
+        <section class="summary-cards">
+          <div class="card">
+            <span class="card-title">Total Products</span>
+            <h2 class="card-value">3</h2>
+          </div>
+          <div class="card">
+            <span class="card-title">Total Stock Value</span>
+            <h2 class="card-value">$6399.20</h2>
+          </div>
+          <div class="card alert-card">
+            <span class="card-title">Low Stock Items</span>
+            <h2 class="card-value">1</h2>
+          </div>
+          <div class="card">
+            <span class="card-title">Categories</span>
+            <h2 class="card-value">3</h2>
+          </div>
+        </section>
+
+        <section class="low-stock-alert">
+          <h3><i class="fas fa-exclamation-circle"></i> Low Stock Alert</h3>
+          <p>The following items are low on stock:</p>
+          <div class="alert-item">
+            <span>Laptop Stand</span>
+            <span>5 left (min: 10)</span>
+          </div>
+        </section>
+
+        <section class="product-search">
+          <input type="text" placeholder="Search products..." />
+        </section>
+
+        <section class="product-list">
+          <h3>Products (3)</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>SKU</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  Wireless Headphones<br /><small>Noise Cancelling</small>
+                </td>
+                <td>WH-001</td>
+                <td>Electronics</td>
+                <td>$199.99</td>
+                <td>25</td>
+                <td><span class="status in-stock">In Stock</span></td>
+                <td><i class="fas fa-ellipsis-h"></i></td>
+              </tr>
+              <tr>
+                <td>Laptop Stand<br /><small>Aluminum Adjustable</small></td>
+                <td>LS-002</td>
+                <td>Accessories</td>
+                <td>$79.99</td>
+                <td>5</td>
+                <td><span class="status low-stock">Low Stock</span></td>
+                <td><i class="fas fa-ellipsis-h"></i></td>
+              </tr>
+              <tr>
+                <td>USB-C Cable<br /><small>3ft USB-C to USB-A</small></td>
+                <td>UC-003</td>
+                <td>Cables</td>
+                <td>$19.99</td>
+                <td>50</td>
+                <td><span class="status in-stock">In Stock</span></td>
+                <td><i class="fas fa-ellipsis-h"></i></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

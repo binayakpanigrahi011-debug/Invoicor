@@ -10,11 +10,11 @@ body {
   min-height: 100vh;
 }
 
+/* ✅ SAME SIDEBAR AS DASHBOARD */
 .sidebar {
   width: 250px;
   background-color: #fff;
   padding: 20px;
-  /* box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); */
   display: flex;
   flex-direction: column;
 }
@@ -95,10 +95,6 @@ body {
   margin-right: 8px;
 }
 
-a {
-  text-decoration: none;
-  color: #777;
-}
 .alerts p {
   font-size: 0.9em;
   color: #dc3545;
@@ -111,12 +107,13 @@ a {
   margin-right: 8px;
 }
 
+/* ✅ Inventory main content styling */
 .main-content {
   flex-grow: 1;
   padding: 20px 30px;
 }
 
-.top-bar {
+.main-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -125,19 +122,12 @@ a {
   border-bottom: 1px solid #eee;
 }
 
-.top-bar h1 {
+.main-header h2 {
   font-size: 1.8em;
-  margin: 0;
   color: #333;
 }
 
-.top-bar .subtitle {
-  font-size: 0.7em;
-  color: #777;
-  margin-left: 10px;
-}
-
-.btn-share {
+.add-product-btn {
   background-color: #007bff;
   color: white;
   border: none;
@@ -147,11 +137,12 @@ a {
   font-size: 0.9em;
 }
 
-.btn-share i {
+.add-product-btn i {
   margin-right: 5px;
 }
 
-.overview-cards {
+/* Cards and Table same theme */
+.summary-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
@@ -176,135 +167,55 @@ a {
   font-size: 1.8em;
   font-weight: bold;
   color: #333;
-  margin-bottom: 5px;
-}
-
-.card .card-info {
-  font-size: 0.8em;
-  color: #999;
 }
 
 .alert-card {
   border-left: 5px solid #dc3545;
 }
 
-.dashboard-sections {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+.low-stock-alert {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   margin-bottom: 30px;
 }
 
-.section-card {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.section-card h3 {
-  margin-top: 0;
-  margin-bottom: 20px;
-  font-size: 1.2em;
-  color: #333;
-}
-
-.data-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
-  font-size: 0.95em;
-  color: #555;
-}
-
-.data-row:last-child {
-  border-bottom: none;
-}
-
-.data-row .value {
-  font-weight: bold;
-  color: #333;
-}
-
-.data-row.pending .value {
-  color: orange;
-}
-
-.data-row.overdue .value {
+.low-stock-alert h3 {
   color: #dc3545;
 }
 
-.data-row.low-stock .value {
-  color: #dc3545;
-}
-
-.recent-invoices {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.recent-invoices h3 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 0;
+.product-search input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   margin-bottom: 20px;
-  font-size: 1.2em;
-  color: #333;
 }
 
-.recent-invoices .view-all-btn {
-  background: none;
-  border: none;
-  color: #007bff;
-  cursor: pointer;
-  font-size: 0.9em;
+.product-list table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.invoice-item {
-  display: grid;
-  grid-template-columns: 100px 1fr 100px 80px;
-  gap: 10px;
-  align-items: center;
-  padding: 10px 0;
+.product-list th,
+.product-list td {
+  padding: 12px 15px;
   border-bottom: 1px solid #eee;
-  font-size: 0.9em;
+  text-align: left;
+}
+a {
+  text-decoration: none;
+  color: #777;
 }
 
-.invoice-item:last-child {
-  border-bottom: none;
+.status.in-stock {
+  color: #28a745;
 }
 
-.invoice-id {
-  font-weight: bold;
-  color: #333;
-}
-
-.invoice-name {
-  color: #555;
-}
-
-.invoice-amount {
-  text-align: right;
-  font-weight: bold;
-  color: #333;
-}
-
-.invoice-status {
-  text-align: center;
-  padding: 3px 8px;
-  border-radius: 12px;
-  font-size: 0.8em;
-  color: white;
-}
-
-.invoice-status.pending {
-  background-color: orange;
-}
-
-.invoice-status.paid {
-  background-color: #28a745;
+.status.low-stock {
+  color: #dc3545;
 }
