@@ -34,7 +34,6 @@ body {
   min-height: 100vh;
 }
 
-/* Sidebar Styles */
 .sidebar {
   width: var(--sidebar-width);          /* was 250px */
   background-color: #fff;
@@ -99,6 +98,10 @@ a {
   color: #ffffff;
 }
 
+
+.sidebar-nav .nav-item .badge.alert {
+  background-color: #dc3545;
+}
 
 .quick-actions h3,
 .alerts h3 {

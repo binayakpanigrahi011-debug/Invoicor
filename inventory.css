@@ -10,7 +10,6 @@ body {
   min-height: 100vh;
 }
 
-/* ✅ SAME SIDEBAR AS DASHBOARD */
 .sidebar {
   width: 250px;
   background-color: #fff;
