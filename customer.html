@@ -3,165 +3,143 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Invoice Pro - Customer Management</title>
+    <title>Invoice Pro Customer</title>
+    <link rel="stylesheet" href="customer.css" />
+
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link rel="stylesheet" href="customer.css" />
+    <script src="auth.js" defer></script>
   </head>
   <body>
-    <aside class="sidebar">
-      <div class="sidebar-header">
-        <br>
-        <h3>Invoice and Inventory Management</h3>
-      </div>
-      <br>
-      <nav class="sidebar-nav">
-        <ul>
-          <li class="nav-item">
-            <a href="dashboard.html"
-              ><i class="fas fa-chart-line"></i> Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a href="invoices.html"
-              ><i class="fas fa-file-invoice"></i> Invoices</a>
-            <span class="badge">1</span>
-          </li>
-          <li class="nav-item">
-            
-            <a href="inventory.html">
-              <i class="fas fa-boxes"></i> Inventory</a>
-            <span class="badge alert">1</span>
-          </li>
-          <li class="nav-item active">
-            <a href="customers.html"></a><i class="fas fa-users"></i> Customers</a>
-          </li>
-          <li class="nav-item"><a href="Reports.html"><i class="fas fa-users"></i> Reports</a></li>
-        </ul>
-      </nav>
-      <br>
-      <div class="quick-actions">
-        <br>
-        <h4>Quick Actions</h4>
-        <button class="new-invoice-btn">
-          <i class="fas fa-plus"></i> New Invoice
-        </button>
-      </div>
-      <div class="alerts">
-        <h4>Alerts</h4>
-        <p><i class="fas fa-exclamation-circle"></i> 1 pending invoice</p>
-        <p><i class="fas fa-exclamation-circle"></i> 1 item low on stock</p>
-      </div>
-    </aside>
+    <div class="page-container">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h3>Invoice and Inventory Management</h3>
+        </div>
+        <nav class="sidebar-nav">
+          <ul>
+            <li class="nav-item">
+              <a href="dashboard.html" class="block-link"><i class="fas fa-chart-line"></i> Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a href="invoices.html" class="block-link"><i class="fas fa-file-invoice"></i> Invoices</a>
+              <span class="badge">1</span>
+            </li>
+            <li class="nav-item">
+              <a href="inventory.html" class="block-link"><i class="fas fa-boxes"></i> Inventory</a>
+              <span class="badge alert">1</span>
+            </li>
+            <li class="nav-item active">
+              <a href="customer.html" class="block-link"><i class="fas fa-users"></i> Customers</a>
+            </li>
+            <li class="nav-item">
+              <a href="Reports.html" class="block-link"><i class="fas fa-chart-pie"></i> Reports</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="quick-actions">
+          <h4>Quick Actions</h4>
+          <button class="new-invoice-btn">
+            <i class="fas fa-plus"></i> New Invoice
+          </button>
+        </div>
+        <div class="alerts">
+          <h4>Alerts</h4>
+          <p><i class="fas fa-exclamation-circle"></i> 1 pending invoice</p>
+          <p><i class="fas fa-exclamation-circle"></i> 1 item low on stock</p>
+        </div>
+      </aside>
 
-    <div class="main-content">
-      <header class="header">
-        <div class="header-left">
-          <button class="back-button">←</button>
-          <div class="logo-title">
-            <h1>Customer Management</h1>
+      <main class="main-content">
+        <header class="main-header">
+          <div class="header-left">
+            <i class="fas fa-arrow-left"></i>
+            <h2>Customer Management</h2>
           </div>
-        </div>
-        <button id="addCustomerBtn" class="add-customer-btn">
-          <span>+</span>
-          <span>Add Customer</span>
-        </button>
-      </header>
+          <button class="add-customer-btn">
+            <i class="fas fa-plus"></i> Add Customer
+          </button>
+        </header>
 
-      <div class="stats-container">
-        <div class="stat-card">
-          <div class="stat-title">Total Customers</div>
-          <div id="totalCustomers" class="stat-value">0</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-title">Active This Month</div>
-          <div id="activeThisMonth" class="stat-value">0</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-title">Avg Orders per Customer</div>
-          <div id="avgOrders" class="stat-value">0.0</div>
-        </div>
-      </div>
+        <section class="summary-cards">
+          <div class="card">
+            <div class="card-content">
+              <h4>Total Customers</h4>
+              <p>2</p>
+            </div>
+            <i class="fas fa-ellipsis-v"></i>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <h4>Active This Month</h4>
+              <p>0</p>
+            </div>
+            <i class="fas fa-ellipsis-v"></i>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <h4>Avg Orders Per Customer</h4>
+              <p>4.0</p>
+            </div>
+            <i class="fas fa-ellipsis-v"></i>
+          </div>
+        </section>
 
-      <div class="search-container">
-        <input
-          type="text"
-          id="searchInput"
-          class="search-input"
-          placeholder="Search customers..."
-        />
-      </div>
+        <section class="customer-list-section">
+          <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search customers..." />
+          </div>
 
-      <div class="customers-table">
-        <table>
-          <thead>
-            <tr>
-              <th>Customer</th>
-              <th>Contact</th>
-              <th>Company</th>
-              <th>Total Orders</th>
-              <th>Last Order</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="customerTableBody">
-            <!-- Dynamic rows go here -->
-          </tbody>
-        </table>
-      </div>
+          <div class="customer-table-container">
+            <h3>Customers (2)</h3>
+            <table class="customer-table">
+              <thead>
+                <tr>
+                  <th>Customer</th>
+                  <th>Contact</th>
+                  <th>Company</th>
+                  <th>Total Orders</th>
+                  <th>Last Order</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <strong>John Smith</strong><br />
+                    123 Main St, Anytown, USA 12345
+                  </td>
+                  <td>
+                    john@example.com<br />
+                    +1 (555) 123-4567
+                  </td>
+                  <td>Tech Solutions Inc</td>
+                  <td>5</td>
+                  <td>20/09/2024</td>
+                  <td><i class="fas fa-ellipsis-v"></i></td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Sarah Johnson</strong><br />
+                    456 Oak Ave, Another City, USA 67890
+                  </td>
+                  <td>
+                    sarah@example.com<br />
+                    +1 (555) 987-6543
+                  </td>
+                  <td>Design Studio</td>
+                  <td>3</td>
+                  <td>18/09/2024</td>
+                  <td><i class="fas fa-ellipsis-v"></i></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
     </div>
-
-    <!-- Modal -->
-    <div id="modal" class="modal hidden">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2>Add Customer</h2>
-        </div>
-        <form id="customerForm" class="form-grid">
-          <div class="form-field">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" required />
-          </div>
-          <div class="form-field">
-            <label for="address">Address</label>
-            <input type="text" id="address" required />
-          </div>
-          <div class="form-field">
-            <label for="email">Email</label>
-            <input type="email" id="email" required />
-          </div>
-          <div class="form-field">
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" required />
-          </div>
-          <div class="form-field">
-            <label for="company">Company</label>
-            <input type="text" id="company" required />
-          </div>
-          <div class="form-field">
-            <label for="orders">Total Orders</label>
-            <input type="number" id="orders" required />
-          </div>
-          <div class="form-field">
-            <label for="lastOrder">Last Order Date</label>
-            <input type="date" id="lastOrder" required />
-          </div>
-          <div class="form-actions">
-            <button
-              type="button"
-              id="cancelBtn"
-              class="add-customer-btn"
-              style="background-color: #666"
-            >
-              Cancel
-            </button>
-            <button type="submit" class="add-customer-btn">Add Customer</button>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <script src="customer.js"></script>
   </body>
 </html>
