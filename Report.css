@@ -1,9 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -21,7 +15,7 @@ a {
 }
 
 .sidebar {
-  width: 290px;
+  width: 250px;
   background-color: #fff;
   padding: 20px;
   display: flex;
@@ -29,10 +23,9 @@ a {
 }
 
 .sidebar-header {
-  margin-top: 20px;
+  margin-bottom: 30px;
   color: #333;
   font-size: 1.1em;
-  padding-bottom: 65px;
 }
 
 .sidebar-nav ul {
@@ -76,9 +69,9 @@ a {
 
 .quick-actions,
 .alerts {
-  margin-top: 70px;
+  margin-top: 30px;
   border-top: 1px solid #eee;
-  padding-top: 30px;
+  padding-top: 20px;
 }
 
 .quick-actions h4,
@@ -117,7 +110,6 @@ a {
   margin-right: 8px;
 }
 
-/* Report content styles */
 .main-content {
   flex: 1;
   padding: 30px;
