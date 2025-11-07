@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-M" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Invoice Pro Customer</title>
     <link rel="stylesheet" href="customer.css" />
@@ -10,7 +10,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <script src="auth.js" defer></script>
   </head>
   <body>
     <div class="page-container">
@@ -21,21 +20,31 @@
         <nav class="sidebar-nav">
           <ul>
             <li class="nav-item">
-              <a href="dashboard.html" class="block-link"><i class="fas fa-chart-line"></i> Dashboard</a>
+              <a href="dashboard.html" class="block-link"
+                ><i class="fas fa-chart-line"></i> Dashboard</a
+              >
             </li>
             <li class="nav-item">
-              <a href="invoices.html" class="block-link"><i class="fas fa-file-invoice"></i> Invoices</a>
+              <a href="invoices.html" class="block-link"
+                ><i class="fas fa-file-invoice"></i> Invoices</a
+              >
               <span class="badge">1</span>
             </li>
             <li class="nav-item">
-              <a href="inventory.html" class="block-link"><i class="fas fa-boxes"></i> Inventory</a>
+              <a href="inventory.html" class="block-link"
+                ><i class="fas fa-boxes"></i> Inventory</a
+              >
               <span class="badge alert">1</span>
             </li>
             <li class="nav-item active">
-              <a href="customer.html" class="block-link"><i class="fas fa-users"></i> Customers</a>
+              <a href="customer.html" class="block-link"
+                ><i class="fas fa-users"></i> Customers</a
+              >
             </li>
             <li class="nav-item">
-              <a href="Reports.html" class="block-link"><i class="fas fa-chart-pie"></i> Reports</a>
+              <a href="Reports.html" class="block-link"
+                ><i class="fas fa-chart-pie"></i> Reports</a
+              >
             </li>
           </ul>
         </nav>
@@ -67,21 +76,21 @@
           <div class="card">
             <div class="card-content">
               <h4>Total Customers</h4>
-              <p>2</p>
+              <p id="total-customers">0</p>
             </div>
             <i class="fas fa-ellipsis-v"></i>
           </div>
           <div class="card">
             <div class="card-content">
               <h4>Active This Month</h4>
-              <p>0</p>
+              <p id="active-customers">0</p>
             </div>
             <i class="fas fa-ellipsis-v"></i>
           </div>
           <div class="card">
             <div class="card-content">
               <h4>Avg Orders Per Customer</h4>
-              <p>4.0</p>
+              <p id="avg-orders">0.0</p>
             </div>
             <i class="fas fa-ellipsis-v"></i>
           </div>
@@ -90,11 +99,15 @@
         <section class="customer-list-section">
           <div class="search-bar">
             <i class="fas fa-search"></i>
-            <input type="text" placeholder="Search customers..." />
+            <input
+              type="text"
+              id="customer-search"
+              placeholder="Search customers..."
+            />
           </div>
 
           <div class="customer-table-container">
-            <h3>Customers (2)</h3>
+            <h3 id="customer-count">Customers (0)</h3>
             <table class="customer-table">
               <thead>
                 <tr>
@@ -106,40 +119,83 @@
                   <th>Actions</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <strong>John Smith</strong><br />
-                    123 Main St, Anytown, USA 12345
-                  </td>
-                  <td>
-                    john@example.com<br />
-                    +1 (555) 123-4567
-                  </td>
-                  <td>Tech Solutions Inc</td>
-                  <td>5</td>
-                  <td>20/09/2024</td>
-                  <td><i class="fas fa-ellipsis-v"></i></td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>Sarah Johnson</strong><br />
-                    456 Oak Ave, Another City, USA 67890
-                  </td>
-                  <td>
-                    sarah@example.com<br />
-                    +1 (555) 987-6543
-                  </td>
-                  <td>Design Studio</td>
-                  <td>3</td>
-                  <td>18/09/2024</td>
-                  <td><i class="fas fa-ellipsis-v"></i></td>
-                </tr>
+              <tbody id="customer-table-body">
+                <!-- Customer rows are dynamically inserted here -->
               </tbody>
             </table>
           </div>
         </section>
       </main>
     </div>
+
+    <!-- Add Customer Modal -->
+    <div id="add-customer-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Add New Customer</h2>
+        <form id="add-customer-form">
+          <label for="customer-name">Customer Name</label>
+          <input type="text" id="customer-name" required />
+
+          <label for="email">Email</label>
+          <input type="email" id="email" required />
+
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" />
+
+          <label for="company">Company</label>
+          <input type="text" id="company" />
+
+          <label for="address">Address</label>
+          <input type="text" id="address" />
+
+          <label for="total-orders">No. of Orders</label>
+          <input type="number" id="total-orders" min="0" value="0" />
+
+          <label for="last-order-date">Last Order Date</label>
+          <input type="date" id="last-order-date" />
+
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-plus"></i> Add Customer
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Edit Customer Modal -->
+    <div id="edit-customer-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-edit-btn">&times;</span>
+        <h2>Edit Customer</h2>
+        <form id="edit-customer-form">
+          <input type="hidden" id="edit-customer-id" />
+          <label for="edit-customer-name">Customer Name</label>
+          <input type="text" id="edit-customer-name" required />
+
+          <label for="edit-email">Email</label>
+          <input type="email" id="edit-email" required />
+
+          <label for="edit-phone">Phone</label>
+          <input type="tel" id="edit-phone" />
+
+          <label for="edit-company">Company</label>
+          <input type="text" id="edit-company" />
+
+          <label for="edit-address">Address</label>
+          <input type="text" id="edit-address" />
+
+          <label for="edit-total-orders">No. of Orders</label>
+          <input type="number" id="edit-total-orders" min="0" />
+
+          <label for="edit-last-order-date">Last Order Date</label>
+          <input type="date" id="edit-last-order-date" />
+
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-save"></i> Save Changes
+          </button>
+        </form>
+      </div>
+    </div>
+    <script src="customer.js"></script>
   </body>
 </html>
