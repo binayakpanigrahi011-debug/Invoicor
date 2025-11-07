@@ -204,27 +204,39 @@ a {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
+/* --- Improved Search Bar UI --- */
 .search-bar {
-  display: flex;
-  align-items: center;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 8px 12px;
+  position: relative;
+  width: 320px;
   margin-bottom: 25px;
-  width: 300px; /* Fixed width for search bar */
 }
 
 .search-bar i {
-  color: #777;
-  margin-right: 10px;
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
 }
 
 .search-bar input {
-  border: none;
-  outline: none;
-  flex-grow: 1;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px 15px 10px 40px; /* Make space for icon */
   font-size: 1em;
-  padding: 2px 0;
+  outline: none;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+.search-bar input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.customer-table-container {
+  max-height: 500px; /* Accommodate many customers */
+  overflow-y: auto; /* Add scrollbar when needed */
 }
 
 .customer-table-container h3 {
@@ -252,6 +264,9 @@ a {
   font-size: 0.9em;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  position: sticky; /* Keep header visible on scroll */
+  top: 0;
+  z-index: 10;
 }
 
 .customer-table tbody tr:hover {
@@ -262,21 +277,105 @@ a {
   color: #333;
 }
 
-.customer-table td:nth-child(2) { /* Contact column */
+.customer-table td:nth-child(2) {
+  /* Contact column */
   color: #555;
   font-size: 0.95em;
 }
 
-.customer-table td:nth-child(2) a {
-    color: #007bff;
-    text-decoration: none;
-}
-.customer-table td:nth-child(2) a:hover {
-    text-decoration: underline;
+.customer-table td.actions i {
+  cursor: pointer;
+  margin-right: 15px;
+  color: #777;
+  transition: color 0.3s;
+  font-size: 1.1em;
 }
 
-.customer-table td i.fa-ellipsis-v {
-  color: #ccc;
+.customer-table td.actions i:last-child {
+  margin-right: 0;
+}
+
+.customer-table td.actions i.edit-btn:hover {
+  color: #007bff;
+}
+
+.customer-table td.actions i.delete-btn:hover {
+  color: #dc3545;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto; /* Reduced top margin */
+  padding: 30px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close-btn,
+.close-edit-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
   cursor: pointer;
-  padding: 5px; /* Make it easier to click */
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+.modal-content form label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: bold;
+}
+
+.modal-content form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box; /* Important for consistent sizing */
+}
+
+.submit-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.submit-btn i {
+  margin-right: 8px;
 }
