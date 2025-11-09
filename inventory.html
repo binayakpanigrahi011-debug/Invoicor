@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inventory Management</title>
     <link rel="stylesheet" href="inventory.css" />
-
-    <!-- Font Awesome for icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -14,6 +12,7 @@
   </head>
   <body>
     <div class="dashboard-container">
+      <!-- Sidebar -->
       <aside class="sidebar">
         <div class="sidebar-header">
           <h3>Invoice and Inventory Management</h3>
@@ -27,8 +26,8 @@
             </li>
             <li class="nav-item">
               <a href="invoices.html"
-                ><i class="fas fa-file-invoice"></i> Invoices
-              </a>
+                ><i class="fas fa-file-invoice"></i> Invoices</a
+              >
               <span class="badge">1</span>
             </li>
             <li class="nav-item active">
@@ -41,7 +40,9 @@
               <a href="customer.html"><i class="fas fa-users"></i> Customers</a>
             </li>
             <li class="nav-item">
-              <a href="Reports.html"><i class="fas fa-chart-pie"></i> Reports</a>
+              <a href="Reports.html"
+                ><i class="fas fa-chart-pie"></i> Reports</a
+              >
             </li>
           </ul>
         </nav>
@@ -58,48 +59,55 @@
         </div>
       </aside>
 
+      <!-- Main Content -->
       <main class="main-content">
         <header class="main-header">
           <h2>Inventory Management</h2>
-          <button class="add-product-btn">
+          <button class="add-product-btn" id="addProductBtn">
             <i class="fas fa-plus"></i> Add Product
           </button>
         </header>
 
+        <!-- Summary Cards -->
         <section class="summary-cards">
           <div class="card">
             <span class="card-title">Total Products</span>
-            <h2 class="card-value">3</h2>
+            <h2 class="card-value" id="total-products">0</h2>
           </div>
           <div class="card">
             <span class="card-title">Total Stock Value</span>
-            <h2 class="card-value">$6399.20</h2>
+            <h2 class="card-value" id="total-stock-value">$0.00</h2>
           </div>
           <div class="card alert-card">
             <span class="card-title">Low Stock Items</span>
-            <h2 class="card-value">1</h2>
+            <h2 class="card-value" id="low-stock-items">0</h2>
           </div>
           <div class="card">
             <span class="card-title">Categories</span>
-            <h2 class="card-value">3</h2>
+            <h2 class="card-value" id="total-categories">0</h2>
           </div>
         </section>
 
+        <!-- DYNAMIC Low Stock Alert -->
         <section class="low-stock-alert">
           <h3><i class="fas fa-exclamation-circle"></i> Low Stock Alert</h3>
-          <p>The following items are low on stock:</p>
-          <div class="alert-item">
-            <span>Laptop Stand</span>
-            <span>5 left (min: 10)</span>
+          <div id="low-stock-list">
+            <!-- Low stock items will be dynamically inserted here by JavaScript -->
           </div>
         </section>
 
+        <!-- Product Search -->
         <section class="product-search">
-          <input type="text" placeholder="Search products..." />
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search products by name, SKU, or category..."
+          />
         </section>
 
+        <!-- Product List -->
         <section class="product-list">
-          <h3>Products (3)</h3>
+          <h3 id="products-count">Products (0)</h3>
           <table>
             <thead>
               <tr>
@@ -112,40 +120,125 @@
                 <th>Actions</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>
-                  Wireless Headphones<br /><small>Noise Cancelling</small>
-                </td>
-                <td>WH-001</td>
-                <td>Electronics</td>
-                <td>$199.99</td>
-                <td>25</td>
-                <td><span class="status in-stock">In Stock</span></td>
-                <td><i class="fas fa-ellipsis-h"></i></td>
-              </tr>
-              <tr>
-                <td>Laptop Stand<br /><small>Aluminum Adjustable</small></td>
-                <td>LS-002</td>
-                <td>Accessories</td>
-                <td>$79.99</td>
-                <td>5</td>
-                <td><span class="status low-stock">Low Stock</span></td>
-                <td><i class="fas fa-ellipsis-h"></i></td>
-              </tr>
-              <tr>
-                <td>USB-C Cable<br /><small>3ft USB-C to USB-A</small></td>
-                <td>UC-003</td>
-                <td>Cables</td>
-                <td>$19.99</td>
-                <td>50</td>
-                <td><span class="status in-stock">In Stock</span></td>
-                <td><i class="fas fa-ellipsis-h"></i></td>
-              </tr>
-            </tbody>
+            <tbody id="product-table-body"></tbody>
           </table>
         </section>
       </main>
     </div>
+
+    <!-- Add/Edit Modals -->
+    <div id="addProductModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Add New Product</h2>
+          <span class="close-btn">&times;</span>
+        </div>
+        <form id="addProductForm">
+          <div class="form-group">
+            <label for="productName">Product Name</label>
+            <input type="text" id="productName" required />
+          </div>
+          <div class="form-group">
+            <label for="sku">SKU</label>
+            <input type="text" id="sku" required />
+          </div>
+          <div class="form-group">
+            <label for="category">Category</label>
+            <input type="text" id="category" />
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" rows="2"></textarea>
+          </div>
+          <div class="form-group-row">
+            <div class="form-group">
+              <label for="price">Price ($)</label>
+              <input
+                type="number"
+                id="price"
+                value="0"
+                min="0"
+                step="0.01"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="stockQuantity">Stock Quantity</label>
+              <input
+                type="number"
+                id="stockQuantity"
+                value="0"
+                min="0"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="minStockLevel">Minimum Stock Level</label>
+            <input
+              type="number"
+              id="minStockLevel"
+              value="5"
+              min="0"
+              required
+            />
+          </div>
+          <button type="submit" class="add-product-submit-btn">
+            <i class="fas fa-plus"></i> Add Product
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div id="editProductModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Edit Product</h2>
+          <span class="close-btn">&times;</span>
+        </div>
+        <form id="editProductForm">
+          <input type="hidden" id="editProductId" />
+          <div class="form-group">
+            <label for="editProductName">Product Name</label>
+            <input type="text" id="editProductName" required />
+          </div>
+          <div class="form-group">
+            <label for="editSku">SKU</label>
+            <input type="text" id="editSku" required />
+          </div>
+          <div class="form-group">
+            <label for="editCategory">Category</label>
+            <input type="text" id="editCategory" />
+          </div>
+          <div class="form-group">
+            <label for="editDescription">Description</label>
+            <textarea id="editDescription" rows="2"></textarea>
+          </div>
+          <div class="form-group-row">
+            <div class="form-group">
+              <label for="editPrice">Price ($)</label>
+              <input type="number" id="editPrice" min="0" step="0.01" required />
+            </div>
+            <div class="form-group">
+              <label for="editStockQuantity">Stock Quantity</label>
+              <input type="number" id="editStockQuantity" min="0" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="editMinStockLevel">Minimum Stock Level</label>
+            <input type="number" id="editMinStockLevel" min="0" required />
+          </div>
+          <button
+            type="submit"
+            class="add-product-submit-btn"
+            style="background-color: #007bff"
+          >
+            <i class="fas fa-save"></i> Save Changes
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="inventory.js"></script>
   </body>
 </html>
