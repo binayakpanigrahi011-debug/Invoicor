@@ -38,19 +38,7 @@ body {
   font-size: 1.2rem;
   font-weight: bold;
 }
-.nav-links {
-  display: flex;
-  gap: 30px;
-  margin-left: -80px;
-  transition: all 0.1s ease-in-out;
-}
-.nav-links a {
-  text-decoration: none;
-  color: black;
-}
-.nav-links a:hover {
-  transform: scale(1.05);
-}
+
 .signup {
   text-decoration: none;
   background-color: hsl(222, 76%, 53%);
@@ -151,6 +139,7 @@ i {
   align-items: center;
 }
 .faq h2 {
+  margin-top: 2rem;
   font-size: 2rem;
 }
 .faq ul {
