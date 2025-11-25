@@ -1,4 +1,3 @@
-// Toggle between login and signup
 const loginBtn = document.getElementById("show-login");
 const signupBtn = document.getElementById("show-signup");
 const loginForm = document.getElementById("login-form");
@@ -18,13 +17,11 @@ signupBtn.addEventListener("click", () => {
   loginForm.classList.remove("active");
 });
 
-// Toggle password visibility
 function togglePassword(id) {
   const input = document.getElementById(id);
   input.type = input.type === "password" ? "text" : "password";
 }
 
-// Handle signup
 signupForm.addEventListener("submit", function (e) {
   e.preventDefault();
   const name = document.getElementById("name").value.trim();
@@ -49,7 +46,6 @@ signupForm.addEventListener("submit", function (e) {
   signupForm.reset();
 });
 
-// Handle login
 loginForm.addEventListener("submit", function (e) {
   e.preventDefault();
   const email = document.getElementById("login-email").value.trim();

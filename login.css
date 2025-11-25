@@ -48,11 +48,10 @@ body {
 .logo-text {
   font-size: clamp(20px, 2.6vw, 30px);
   font-weight: 800;
-  color: #000000; /* Changed to pure black */
+  color: #000000;
   letter-spacing: -0.02em;
   line-height: 1;
 }
-
 
 .subtitle {
   font-size: 18px;
@@ -66,7 +65,6 @@ body {
   justify-content: center;
   margin-bottom: 40px;
   gap: 10px;
-  
 }
 
 .toggle-buttons button {
@@ -161,7 +159,6 @@ input[type="password"] {
   height: 20px;
 }
 
-/* Keep fadeIn for form toggle but remove hover/animation effects */
 .form {
   display: none;
   animation: fadeIn 0.3s ease-in-out;

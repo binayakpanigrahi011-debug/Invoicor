@@ -10,19 +10,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const customerTableBody = document.getElementById("customer-table-body");
   const customerSearchInput = document.getElementById("customer-search");
 
-  // Summary Card Elements
   const totalCustomersElem = document.getElementById("total-customers");
   const customerCountElem = document.getElementById("customer-count");
   const activeCustomersElem = document.getElementById("active-customers");
   const avgOrdersElem = document.getElementById("avg-orders");
 
-  // --- State Management ---
   let customers = [];
 
-  const getCustomers = () => JSON.parse(localStorage.getItem("customers")) || [];
-  const saveCustomers = () => localStorage.setItem("customers", JSON.stringify(customers));
+  const getCustomers = () =>
+    JSON.parse(localStorage.getItem("customers")) || [];
+  const saveCustomers = () =>
+    localStorage.setItem("customers", JSON.stringify(customers));
 
-  // --- Utility Functions ---
   const formatDateForDisplay = (dateString) => {
     if (!dateString) return "N/A";
     const date = new Date(dateString);
@@ -34,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return `${day}/${month}/${year}`;
   };
 
-  // --- UI Rendering & Summary ---
   const updateSummaryCards = () => {
     const totalCount = customers.length;
     totalCustomersElem.textContent = totalCount;
@@ -44,14 +42,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const activeCount = customers.filter((c) => {
       if (!c.lastOrder) return false;
       const orderDate = new Date(c.lastOrder);
-      return orderDate.getMonth() === now.getMonth() && orderDate.getFullYear() === now.getFullYear();
+      return (
+        orderDate.getMonth() === now.getMonth() &&
+        orderDate.getFullYear() === now.getFullYear()
+      );
     }).length;
     activeCustomersElem.textContent = activeCount;
 
     if (totalCount === 0) {
       avgOrdersElem.textContent = "0.0";
     } else {
-      const totalOrders = customers.reduce((sum, c) => sum + (c.totalOrders || 0), 0);
+      const totalOrders = customers.reduce(
+        (sum, c) => sum + (c.totalOrders || 0),
+        0
+      );
       avgOrdersElem.textContent = (totalOrders / totalCount).toFixed(1);
     }
   };
@@ -76,7 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateSummaryCards();
   };
 
-  // --- Modal Handling ---
   const showModal = (modal) => (modal.style.display = "block");
   const closeModal = (modal) => (modal.style.display = "none");
 
@@ -88,7 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target === editCustomerModal) closeModal(editCustomerModal);
   });
 
-  // --- Add Customer (with Validation) ---
   addCustomerForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -105,7 +107,8 @@ document.addEventListener("DOMContentLoaded", () => {
       phone,
       company: document.getElementById("company").value,
       address: document.getElementById("address").value,
-      totalOrders: parseInt(document.getElementById("total-orders").value, 10) || 0,
+      totalOrders:
+        parseInt(document.getElementById("total-orders").value, 10) || 0,
       lastOrder: document.getElementById("last-order-date").value,
     });
 
@@ -115,7 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
     closeModal(addCustomerModal);
   });
 
-  // --- Edit / Delete Handling (ID SAFE) ---
   customerTableBody.addEventListener("click", (e) => {
     const row = e.target.closest("tr");
     if (!row) return;
@@ -146,7 +148,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // --- Save Edited Customer (with Validation) ---
   editCustomerForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -156,7 +157,9 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const customerId = Number(document.getElementById("edit-customer-id").value);
+    const customerId = Number(
+      document.getElementById("edit-customer-id").value
+    );
     const index = customers.findIndex((c) => c.id === customerId);
 
     if (index !== -1) {
@@ -167,7 +170,8 @@ document.addEventListener("DOMContentLoaded", () => {
         phone,
         company: document.getElementById("edit-company").value,
         address: document.getElementById("edit-address").value,
-        totalOrders: parseInt(document.getElementById("edit-total-orders").value, 10) || 0,
+        totalOrders:
+          parseInt(document.getElementById("edit-total-orders").value, 10) || 0,
         lastOrder: document.getElementById("edit-last-order-date").value,
       };
       saveCustomers();
@@ -176,7 +180,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // --- Search ---
   customerSearchInput.addEventListener("input", () => {
     const filter = customerSearchInput.value.toLowerCase();
     const filtered = customers.filter((c) =>
@@ -185,7 +188,6 @@ document.addEventListener("DOMContentLoaded", () => {
     renderCustomers(filtered);
   });
 
-  // --- Initial Load ---
   function initializeApp() {
     customers = getCustomers();
     renderCustomers();

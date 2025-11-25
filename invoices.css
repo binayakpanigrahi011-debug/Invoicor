@@ -35,7 +35,7 @@ body {
   display: flex;
   align-items: center;
   color: #555;
-  transition: background-color 0.3s , color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .sidebar-nav .nav-item:hover,
@@ -218,7 +218,6 @@ a {
   color: #666;
 }
 
-/* UPDATED Status Badge Styles */
 .status-badge {
   display: inline-block;
   padding: 5px 12px;
@@ -238,50 +237,49 @@ a {
   background-color: #fdeec9;
 }
 
-/* NEW Action Dropdown Styles */
 .actions-cell {
-    position: relative;
-    text-align: center;
+  position: relative;
+  text-align: center;
 }
 
 .actions-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2em;
-    color: #555;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  color: #555;
 }
 
 .actions-dropdown {
-    display: none;
-    position: absolute;
-    right: 20px;
-    top: 30px;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    z-index: 10;
-    list-style: none;
-    padding: 5px 0;
-    margin: 0;
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 30px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  list-style: none;
+  padding: 5px 0;
+  margin: 0;
 }
 
 .actions-dropdown.show {
-    display: block;
+  display: block;
 }
 
 .actions-dropdown li a {
-    display: block;
-    padding: 8px 15px;
-    color: #333;
-    text-decoration: none;
-    font-size: 0.9em;
+  display: block;
+  padding: 8px 15px;
+  color: #333;
+  text-decoration: none;
+  font-size: 0.9em;
 }
 
 .actions-dropdown li a:hover {
-    background-color: #f5f5f5;
+  background-color: #f5f5f5;
 }
 .actions-dropdown li a.delete {
-    color: #dc3545;
+  color: #dc3545;
 }

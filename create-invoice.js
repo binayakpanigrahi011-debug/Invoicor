@@ -1,34 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // --- STORAGE KEYS (aligned with inventory.js and customer.js) ---
+    
     const PRODUCTS_STORAGE_KEY_V1 = 'inventoryProducts:v1';
     const PRODUCTS_STORAGE_KEY_OLD = 'inventoryProducts';
     const CUSTOMERS_STORAGE_KEY = 'customers';
     const INVOICES_STORAGE_KEY = 'invoicesData';
 
-    // --- ELEMENT SELECTORS ---
+  
     const formTitle = document.querySelector('.form-header h1');
     const saveInvoiceBtn = document.getElementById("saveInvoiceBtn");
     const itemsContainer = document.getElementById("invoice-items-container");
     const selectCustomerEl = document.getElementById("selectCustomer");
 
-    // Customer form fields
+    
     const customerNameEl = document.getElementById('customerName');
     const customerEmailEl = document.getElementById('customerEmail');
     const customerAddressEl = document.getElementById('customerAddress');
 
-    // --- URL PARAMS ---
+   
     const urlParams = new URLSearchParams(window.location.search);
     const invoiceIdToEdit = urlParams.get('id');
     const isEditMode = !!invoiceIdToEdit;
 
-    // --- FETCH LOCAL DATA ---
+    
     const products = JSON.parse(localStorage.getItem(PRODUCTS_STORAGE_KEY_V1)) ||
                      JSON.parse(localStorage.getItem(PRODUCTS_STORAGE_KEY_OLD)) || [];
     const customers = JSON.parse(localStorage.getItem(CUSTOMERS_STORAGE_KEY)) || [];
 
-    // --- FUNCTIONS ---
-
-    // Add a new invoice item row
+    
     const createItemRow = (item = null) => {
         const row = document.createElement("div");
         row.classList.add("item-row");
@@ -55,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
         productSelect.dispatchEvent(new Event('change', { bubbles: true }));
     };
 
-    // Calculate subtotal, tax, total
+    
     const updateSummary = () => {
         let subtotal = 0;
         document.querySelectorAll('.item-row').forEach(row => {
@@ -70,7 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("total").textContent = `$${total.toFixed(2)}`;
     };
 
-    // Populate customer dropdown
     const populateCustomerDropdown = () => {
         selectCustomerEl.innerHTML = '<option value="">Select Existing Customer</option>';
         if (customers.length === 0) {
@@ -83,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    // Autofill customer details when selected
+
     const handleCustomerSelect = () => {
         const selectedCustomerId = selectCustomerEl.value;
         if (!selectedCustomerId) {
@@ -100,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // Save or update invoice
+ 
     const saveInvoice = () => {
         const totalAmount = parseFloat(document.getElementById("total").textContent.replace('$', '')) || 0;
         const invoiceData = {
@@ -142,7 +139,6 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = 'invoices.html';
     };
 
-    // Prefill for editing existing invoice
     const populateFormForEdit = () => {
         const invoices = JSON.parse(localStorage.getItem(INVOICES_STORAGE_KEY)) || [];
         const invoice = invoices.find(inv => inv.id == invoiceIdToEdit);
@@ -165,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
         invoice.items.forEach(item => createItemRow(item));
     };
 
-    // --- INITIALIZATION ---
+
     populateCustomerDropdown();
 
     if (isEditMode) {
@@ -177,12 +173,10 @@ document.addEventListener("DOMContentLoaded", () => {
         createItemRow();
     }
 
-    // --- EVENT HANDLERS ---
     document.getElementById("addItemBtn").addEventListener("click", () => createItemRow());
     selectCustomerEl.addEventListener('change', handleCustomerSelect);
     saveInvoiceBtn.addEventListener('click', saveInvoice);
 
-    // Update and delete logic
     const itemUpdateHandler = (e) => {
         if (!e.target.matches('.product-select, .quantity-input')) return;
         const row = e.target.closest('.item-row');

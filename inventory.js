@@ -1,16 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Modal elements
   const addProductBtn = document.getElementById("addProductBtn");
   const addModal = document.getElementById("addProductModal");
   const editModal = document.getElementById("editProductModal");
   const addForm = document.getElementById("addProductForm");
   const editForm = document.getElementById("editProductForm");
 
-  // Search and Table
   const searchInput = document.getElementById("searchInput");
   const productTableBody = document.getElementById("product-table-body");
 
-  // Summary Cards and Alerts
   const totalProductsEl = document.getElementById("total-products");
   const totalValueEl = document.getElementById("total-stock-value");
   const lowStockEl = document.getElementById("low-stock-items");
@@ -18,10 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const productsCountEl = document.getElementById("products-count");
   const lowStockListContainer = document.getElementById("low-stock-list");
 
-  // Local Storage Key (versioned so future migrations are easy)
   const STORAGE_KEY = "inventoryProducts:v1";
-
-  // --------------- Storage helpers ---------------
 
   const getProducts = () => {
     try {
@@ -37,8 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
   };
 
-  // --------------- Utilities ---------------
-
   const toInt = (val, fallback = 0) => {
     const n = parseInt(val, 10);
     return Number.isFinite(n) ? n : fallback;
@@ -51,8 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const cleanText = (str) => (str == null ? "" : String(str).trim());
 
-  // Attempt to read existing rows already present in the table (first page load)
-  // Expected columns order: Name(+desc), SKU, Category, Price, StockQty, Status, Actions
+  ns;
   const extractProductsFromTable = () => {
     const rows = Array.from(productTableBody?.querySelectorAll("tr") || []);
     const products = [];
@@ -61,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const tds = tr.querySelectorAll("td");
       if (tds.length < 5) return; // not a data row
 
-      // Name & optional <small> description
       const nameCell = tds[0];
       const name = cleanText(nameCell.childNodes[0]?.textContent || "");
       const small = nameCell.querySelector("small");
@@ -72,20 +62,18 @@ document.addEventListener("DOMContentLoaded", () => {
       const price = toFloat(tds[3]?.textContent, 0);
       const stockQuantity = toInt(tds[4]?.textContent, 0);
 
-      // Try to guess minStockLevel from status text, else default 5
       let minStockLevel = 5;
       const statusCell = tds[5];
       if (statusCell) {
         const statusText = (statusCell.textContent || "").toLowerCase();
         if (statusText.includes("low")) {
-          // If it's already low, pick a threshold just above current
           minStockLevel = Math.max(1, stockQuantity + 1);
         }
       }
 
       if (name || sku || category) {
         products.push({
-          id: Date.now() + idx, // basic unique id
+          id: Date.now() + idx,
           name,
           sku,
           category,
@@ -100,25 +88,28 @@ document.addEventListener("DOMContentLoaded", () => {
     return products;
   };
 
-  // --------------- UI Rendering ---------------
-
   const renderProducts = (productsToRender) => {
     const products = productsToRender || getProducts();
     productTableBody.innerHTML = "";
 
     if (products.length === 0) {
-      productTableBody.innerHTML =
-        `<tr><td colspan="7" style="text-align:center;">No products found.</td></tr>`;
+      productTableBody.innerHTML = `<tr><td colspan="7" style="text-align:center;">No products found.</td></tr>`;
     } else {
       products.forEach((product) => {
         const statusClass =
-          product.stockQuantity <= product.minStockLevel ? "low-stock" : "in-stock";
+          product.stockQuantity <= product.minStockLevel
+            ? "low-stock"
+            : "in-stock";
         const statusText =
-          product.stockQuantity <= product.minStockLevel ? "Low Stock" : "In Stock";
+          product.stockQuantity <= product.minStockLevel
+            ? "Low Stock"
+            : "In Stock";
 
         const row = `
           <tr>
-            <td>${product.name}<br><small>${product.description || ""}</small></td>
+            <td>${product.name}<br><small>${
+          product.description || ""
+        }</small></td>
             <td>${product.sku}</td>
             <td>${product.category}</td>
             <td>$${toFloat(product.price).toFixed(2)}</td>
@@ -129,8 +120,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 <i class="fas fa-ellipsis-h"></i>
               </button>
               <ul class="actions-dropdown">
-                <li><a href="#" class="edit-btn" data-id="${product.id}">Edit</a></li>
-                <li><a href="#" class="delete-btn delete" data-id="${product.id}">Delete</a></li>
+                <li><a href="#" class="edit-btn" data-id="${
+                  product.id
+                }">Edit</a></li>
+                <li><a href="#" class="delete-btn delete" data-id="${
+                  product.id
+                }">Delete</a></li>
               </ul>
             </td>
           </tr>
@@ -146,8 +141,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const updateSummaryCards = () => {
     const products = getProducts();
     const totalProducts = products.length;
-    const totalValue = products.reduce((sum, p) => sum + toFloat(p.price) * toInt(p.stockQuantity), 0);
-    const lowStockItems = products.filter((p) => toInt(p.stockQuantity) <= toInt(p.minStockLevel)).length;
+    const totalValue = products.reduce(
+      (sum, p) => sum + toFloat(p.price) * toInt(p.stockQuantity),
+      0
+    );
+    const lowStockItems = products.filter(
+      (p) => toInt(p.stockQuantity) <= toInt(p.minStockLevel)
+    ).length;
     const categories = new Set(products.map((p) => cleanText(p.category))).size;
 
     totalProductsEl.textContent = totalProducts;
@@ -175,7 +175,9 @@ document.addEventListener("DOMContentLoaded", () => {
         alertItem.className = "alert-item";
         alertItem.innerHTML = `
           <span>${product.name}</span>
-          <span>${toInt(product.stockQuantity)} left (min: ${toInt(product.minStockLevel)})</span>
+          <span>${toInt(product.stockQuantity)} left (min: ${toInt(
+          product.minStockLevel
+        )})</span>
         `;
         lowStockListContainer.appendChild(alertItem);
       });
@@ -186,22 +188,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // --------------- Modal handling ---------------
-
   const openModal = (modal) => (modal.style.display = "block");
   const closeModal = (modal) => (modal.style.display = "none");
 
   addProductBtn.addEventListener("click", () => openModal(addModal));
 
   document.querySelectorAll(".close-btn").forEach((btn) => {
-    btn.addEventListener("click", (e) => closeModal(e.target.closest(".modal")));
+    btn.addEventListener("click", (e) =>
+      closeModal(e.target.closest(".modal"))
+    );
   });
 
   window.addEventListener("click", (e) => {
     if (e.target.classList.contains("modal")) closeModal(e.target);
   });
-
-  // --------------- Event handlers ---------------
 
   addForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -234,9 +234,14 @@ document.addEventListener("DOMContentLoaded", () => {
       description: document.getElementById("editDescription").value,
       price: toFloat(document.getElementById("editPrice").value),
       stockQuantity: toInt(document.getElementById("editStockQuantity").value),
-      minStockLevel: toInt(document.getElementById("editMinStockLevel").value, 5),
+      minStockLevel: toInt(
+        document.getElementById("editMinStockLevel").value,
+        5
+      ),
     };
-    let products = getProducts().map((p) => (p.id === productId ? updatedProduct : p));
+    let products = getProducts().map((p) =>
+      p.id === productId ? updatedProduct : p
+    );
     saveProducts(products);
     renderProducts();
     closeModal(editModal);
@@ -274,10 +279,13 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("editProductName").value = productToEdit.name;
         document.getElementById("editSku").value = productToEdit.sku;
         document.getElementById("editCategory").value = productToEdit.category;
-        document.getElementById("editDescription").value = productToEdit.description;
+        document.getElementById("editDescription").value =
+          productToEdit.description;
         document.getElementById("editPrice").value = productToEdit.price;
-        document.getElementById("editStockQuantity").value = productToEdit.stockQuantity;
-        document.getElementById("editMinStockLevel").value = productToEdit.minStockLevel;
+        document.getElementById("editStockQuantity").value =
+          productToEdit.stockQuantity;
+        document.getElementById("editMinStockLevel").value =
+          productToEdit.minStockLevel;
         openModal(editModal);
       }
     } else if (target.classList.contains("delete-btn")) {
@@ -293,31 +301,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.addEventListener("click", (e) => {
     if (!e.target.closest(".actions-cell")) {
-      document.querySelectorAll(".actions-dropdown.show").forEach((d) => d.classList.remove("show"));
+      document
+        .querySelectorAll(".actions-dropdown.show")
+        .forEach((d) => d.classList.remove("show"));
     }
   });
 
-  // Keep all tabs in sync if multiple windows are open
   window.addEventListener("storage", (e) => {
     if (e.key === STORAGE_KEY) renderProducts();
   });
 
-  // --------------- Initialization ---------------
-
-  // If storage is empty the first time, harvest whatever is already in the table
-  // so your existing items persist after refresh/login.
   const ensureStorageInitialized = () => {
     const existing = getProducts();
     if (existing.length > 0) {
-      // Already initialized
       return;
     }
-    // Try to extract from current table rows (if any were hardcoded in HTML)
     const harvested = extractProductsFromTable();
     if (harvested.length > 0) {
       saveProducts(harvested);
     } else {
-      // Leave it empty; user will add via UI and it will persist thereafter
       saveProducts([]);
     }
   };

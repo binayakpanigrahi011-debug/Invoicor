@@ -135,7 +135,6 @@ body {
   font-size: 0.95em;
 }
 
-
 .add-product-btn i {
   margin-right: 5px;
 }
@@ -204,7 +203,6 @@ body {
   box-sizing: border-box;
 }
 
-/* ✅ FIX: Allow dropdown to escape table */
 .product-list table {
   width: 100%;
   border-collapse: collapse;
@@ -239,7 +237,6 @@ a {
   color: #dc3545;
 }
 
-/* MODALS */
 .modal {
   display: none;
   position: fixed;
@@ -318,7 +315,6 @@ textarea {
   font-size: 1em;
 }
 
-/* ✅ FIX DROPDOWN VISIBILITY */
 .actions-cell {
   position: relative;
   text-align: center;
