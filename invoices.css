@@ -23,10 +23,6 @@ body {
   color: #333;
   font-size: 1.1em;
 }
-a {
-  text-decoration: none;
-  color: #777;
-}
 
 .sidebar-nav ul {
   list-style: none;
@@ -39,7 +35,7 @@ a {
   display: flex;
   align-items: center;
   color: #555;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s , color 0.3s;
 }
 
 .sidebar-nav .nav-item:hover,
@@ -110,6 +106,11 @@ a {
   margin-right: 8px;
 }
 
+a {
+  text-decoration: none;
+  color: #555;
+}
+
 .main-content {
   flex-grow: 1;
   padding: 20px;
@@ -120,10 +121,6 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* background-color: #fff; */
-  padding: 10px 10px;
-  /* border-radius: 8px; */
-  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); */
   margin-bottom: 20px;
 }
 
@@ -138,28 +135,22 @@ a {
   font-size: 1.5em;
   margin-right: 10px;
   cursor: pointer;
-  color: #555;
-  transition: color 0.3s;
-}
-.back-button:hover {
-  color: #007bff;
 }
 
 .navbar h1 {
   margin: 0;
   font-size: 1.8em;
-  color: #333;
 }
 
 .header-new-invoice-button {
-  background-color: #3498db;
+  background-color: #007bff;
   color: white;
   border: none;
   padding: 10px 15px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 0.9em;
-  transition: background-color 0.3s ease;
+  text-decoration: none;
 }
 
 .invoice-list-section {
@@ -174,7 +165,6 @@ a {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  flex-wrap: wrap;
 }
 
 .search-input {
@@ -182,9 +172,7 @@ a {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  font-size: 0.9em;
   margin-right: 15px;
-  min-width: 200px;
 }
 
 .filter-group {
@@ -196,72 +184,104 @@ a {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  font-size: 0.9em;
   margin-right: 10px;
-  background-color: white;
-  cursor: pointer;
 }
 
 .filter-icon {
   background: none;
   border: 1px solid #ddd;
-  padding: 9px 12px;
+  padding: 8px 12px;
   border-radius: 5px;
-  font-size: 1em;
   cursor: pointer;
-  color: #555;
-  transition: background-color 0.3s ease;
-}
-
-.filter-icon:hover {
-  background-color: #f0f0f0;
 }
 
 .invoice-list-header h2 {
   margin-top: 0;
   margin-bottom: 15px;
-  font-size: 1.2em;
-  color: #333;
 }
 
 .invoice-table {
   width: 100%;
   border-collapse: collapse;
-  text-align: left;
 }
 
 .invoice-table th,
 .invoice-table td {
   padding: 12px 15px;
   border-bottom: 1px solid #eee;
+  text-align: left;
 }
 
 .invoice-table th {
   background-color: #f8f8f8;
   font-weight: bold;
   color: #666;
-  font-size: 0.9em;
-  text-transform: uppercase;
 }
 
-.invoice-table tbody tr:hover {
-  background-color: #f9f9f9;
-}
-
+/* UPDATED Status Badge Styles */
 .status-badge {
   display: inline-block;
-  padding: 5px 10px;
+  padding: 5px 12px;
   border-radius: 15px;
-  font-size: 0.75em;
+  font-size: 0.8em;
   font-weight: bold;
   text-transform: capitalize;
-  color: white;
 }
 
 .status-paid {
-  background-color: #2ecc71;
+  color: #27663a;
+  background-color: #cff6dd;
 }
 
 .status-pending {
-  background-color: #f1c40f;
+  color: #7a5f09;
+  background-color: #fdeec9;
+}
+
+/* NEW Action Dropdown Styles */
+.actions-cell {
+    position: relative;
+    text-align: center;
+}
+
+.actions-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.actions-dropdown {
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: 30px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 10;
+    list-style: none;
+    padding: 5px 0;
+    margin: 0;
+}
+
+.actions-dropdown.show {
+    display: block;
+}
+
+.actions-dropdown li a {
+    display: block;
+    padding: 8px 15px;
+    color: #333;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.actions-dropdown li a:hover {
+    background-color: #f5f5f5;
+}
+.actions-dropdown li a.delete {
+    color: #dc3545;
 }
