@@ -76,6 +76,9 @@ body {
   margin-bottom: 15px;
 }
 
+#btn {
+  color: white;
+}
 .new-invoice-btn {
   background-color: #007bff;
   color: white;
